@@ -49,6 +49,8 @@
 #include "tv.h"
 #include "window.h"
 #include "constants/event_objects.h"
+#include "pokemon.h"
+#include "wild_encounter.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2298,4 +2300,18 @@ bool8 ScrCmd_warpsootopolislegend(struct ScriptContext *ctx)
     DoSootopolisLegendWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
+}
+
+//battle_engine_v2 specific macros
+
+bool8 ScrCmd_choosedoublewildmons(struct ScriptContext *ctx)
+{
+    u16 species1 = (VarGet(ScriptReadHalfword(ctx)));
+    u8 level1 = ScriptReadByte(ctx);
+    u16 species2 = (VarGet(ScriptReadHalfword(ctx)));
+    u8 level2 = ScriptReadByte(ctx);
+    u8 gender = (Random() % 2);
+
+    CreateMonWithGenderNatureLetter(&gEnemyParty[0], species1, level1, 32, gender, PickWildMonNature(), 0);
+    CreateMonWithGenderNatureLetter(&gEnemyParty[3], species2, level2, 32, gender, PickWildMonNature(), 0);
 }

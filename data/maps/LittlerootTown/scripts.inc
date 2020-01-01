@@ -1065,3 +1065,22 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+@Test trainers for special multi battle stuff
+
+LRT_TestMultiBattle::
+	msgbox startingWildBattle
+	closemessage
+	special SavePlayerParty
+	choosedoublewildmons SPECIES_MACHOP, 10, SPECIES_GEODUDE, 10
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI 
+	setvar VAR_0x8005, 1 
+	setvar VAR_0x8006, TRAINER_RED
+	setvar VAR_0x8007, TRAINER_BACK_PIC_RED
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	release
+	end
+
+startingWildBattle:
+	.string "Starting wild double battle!$"

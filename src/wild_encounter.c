@@ -301,7 +301,7 @@ static u16 GetCurrentMapWildMonHeaderId(void)
     return -1;
 }
 
-static u8 PickWildMonNature(void)
+u8 PickWildMonNature(void)
 {
     u8 i;
     u8 j;

@@ -1559,6 +1559,15 @@
 	.2byte \quantity
 	.endm
 
+	@ Chooses 2 species at level for use with Special Multi Battle and puts them in slots enemy party 0 and 3. You can specify a different level for each.
+	.macro choosedoublewildmons species1:req, level1:req, species2:req, level2:req
+	.byte 0xe3
+	.2byte \species1
+	.byte \level1
+	.2byte \species2
+	.byte \level2
+	.endm
+
 
 @ Supplementary
 
